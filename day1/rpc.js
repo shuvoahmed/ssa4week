@@ -18,6 +18,12 @@ else if(mySelection === 2)
 else
 	mySelection = 'Scissors';
 
+
+
+//var computer = ['r', 'p', 's'][Math.floor(Math.random())];
+//this code basically assigns 0 to r, 1 to p, and 2 to s.
+
+
 console.log('I Selected ' + mySelection);
 alert('I Selected:  ' + mySelection);
 if(userSelection === 'Rock')
