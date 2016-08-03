@@ -1,0 +1,87 @@
+<html>
+
+<head>
+<title>Hello, World</title>
+<style>
+.alert_class {
+
+	color: red;
+}
+</style>
+</head>
+
+<body>
+
+<p id="demo">Let AJAX change this text.</p>
+
+<button type="button" onclick="loadDoc()">Change Content</button>
+</body>
+<script>
+	
+function loadDoc() {
+
+	var xhttp;
+	xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+		if(xhttp.readyState === 4 && xhttp.status === 200)
+		{
+			//document.getElementById("demo").innerHTML = xhttp.responseText;
+			var data = JSON.parse(xhttp.responseText);
+			var ul = document.createElement('ul');
+			for (var i in data)
+			{
+				var li = document.createElement('li');
+				li.innerHTML = data[i];
+				ul.appendChild(li);
+			}
+			document.body.appendChild(ul);
+
+
+			// var arr = JSON.parse(xhttp.responseText);
+			// var i;
+			// document.getElementById("demo").innerHTML = arr.Title + " " + arr.Year;
+
+			// //console.log('Before');
+			// //console.log(Object.keys(arr).length);
+			// //console.log('After');
+			// var keys = Object.keys(arr);
+			// //var values = Object.values(arr);
+			// console.log(keys.length);
+			
+			// for(i = 0; i < Object.keys(arr).length; i++) {
+   //      		//console.log('Test');
+   //      		var temp = Object.keys(arr)[i];
+   //      		console.log(temp);
+   //      		console.log(arr.temp);
+   //      	}
+
+
+
+			// var x = document.createElement("UL");
+   //  		x.setAttribute("id", "myUL");
+   //  		document.body.appendChild(x);
+
+   //  		var y = document.createElement("LI");
+   //  		var t = document.createTextNode("Tea");
+   //  		y.appendChild(t);
+   //  		document.getElementById("myUL").appendChild(y);
+
+
+			// parse responseText
+      /*
+        <ul>
+            <li></li>
+            <li></li>
+        </ul>
+    
+
+      */
+
+		}
+	};
+	xhttp.open("GET", 'http://www.omdbapi.com/?t=batman&y=&plot=short&r=json', true);
+	xhttp.send();
+}
+
+</script>
+</html>

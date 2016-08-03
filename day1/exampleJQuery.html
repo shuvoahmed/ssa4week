@@ -1,0 +1,41 @@
+<html>
+
+<head>
+<title>Rock, Paper, Scissors</title>
+<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+<style>
+.alert_class {
+
+	color: red;
+}
+</style>
+</head>
+
+<body>
+<div>Enter 'r', 'p', or 's' and hit enter.</div>
+<input id="promptInput" type="text"/> 
+
+</body>
+<script>
+
+	// function foo(a, b, c) {
+	// 	c = c || 9;
+
+	// 	console.log(a, b, c);
+	// }
+	// var foo = jQuery('#foo');
+	// var div = document.createElement('div');
+	// div.innerHTML = msg;
+	// div.setAttribute('class','alert_class');
+
+	// document.body.appendChild(div);
+
+	var x = {ken: 7, mary: 'hi'};
+	var y = Object.create(x);
+	var z = Object.create(y);
+	console.log(y.ken);
+	y.ken = 10;
+	console.log(z.ken);
+
+</script>
+</html>
