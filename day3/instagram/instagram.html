@@ -1,0 +1,87 @@
+<html>
+
+<head>
+<title>Instagram Sample</title>
+<style>
+.alert_class {
+
+	color: red;
+}
+</style>
+</head>
+
+<body>
+
+<p id="demo">Instagram Demo...</p>
+
+<select id="people" name="names" onchange="loadPic()">
+  	<option value="alice">Alice</option>
+   	<option value="bob">Bob</option>
+  	<option value="carol">Carol</option>
+   	<option value="david">David</option>
+</select>
+
+<button type="button" onclick="loadPic()">Get Instagram Picture</button>
+
+<p id="displayArea">Images</p>
+
+</body>
+<script>
+	
+
+function loadPic() {
+
+	var user = document.getElementById("people").value;
+	//console.log(user);
+	var list = document.getElementById("people");
+	var displayName = list.options[list.selectedIndex].text;
+	//console.log(displayName);
+	var baseUrl = "http://localhost:8080";
+	var url = "http://localhost:8080/" + displayName;
+	//console.log(url);
+
+	var xhttp;
+	xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+		if(xhttp.readyState === 4 && xhttp.status === 200)
+		{
+			//document.getElementById("displayArea").innerHTML = "";
+			var last;
+			var ele = document.getElementById("displayArea");
+			while(last = ele.lastChild)
+			{
+				ele.removeChild(last);
+			}
+			var data = JSON.parse(xhttp.responseText);
+			//console.log(data);
+			//document.getElementById("demo").innerHTML = xhttp.responseText;
+			// var ul = document.createElement('img');
+			for (var i in data)
+		 	{
+			 	var img = document.createElement('img');
+			 	var temp = data[i];
+			 	var imgSrc = baseUrl + "/images/" + temp['url'];
+			 	var imgAtl = temp['description'];
+			 	//console.log(imgSrc);
+			 	//console.log(imgAtl);
+			 	//for(var j in temp)
+			 	//{
+			 	//	console.log(temp[j]);
+			 	//}
+			 	img.setAttribute('src',imgSrc);
+			 	img.setAttribute('title',imgAtl);
+			 	img.setAttribute('height', "150");
+			 	img.setAttribute('width', "150");
+			 	document.getElementById("displayArea").appendChild(img);
+			 	var tr = document.createElement('tr');
+			 	document.getElementById("displayArea").appendChild(tr);
+			}
+		}
+	};
+	
+	xhttp.open("GET", url);
+	xhttp.send();
+}
+
+</script>
+</html>
