@@ -1,0 +1,60 @@
+package p1;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
+
+public class SortLinesInFile {
+	
+	static List<String> lines = null;
+
+	public static void main(String[] args) {
+
+		readFile();
+	}
+	
+	public static void readFile()
+	{
+		try
+		{
+			File file = new File("words.txt");
+			FileReader fr = new FileReader(file);
+			BufferedReader br = new BufferedReader(fr);
+			String line;
+			while((line = br.readLine()) != null)
+			{
+				lines.add(line);
+			}
+			
+//			try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+//			    String line;
+//			    while ((line = br.readLine()) != null) {
+//			       // process the line.
+//			    }
+//			}
+			
+			
+			
+			
+			//lines = Files.readAllLines(Paths.get("words.txt"), StandardCharsets.UTF_8);
+			
+			int i = 0;
+			for(String s : lines)
+			{
+				System.out.print(i);
+				System.out.println(s);
+				i++;
+			}
+		}
+		catch(IOException ioe)
+		{
+			ioe.printStackTrace(System.err);
+		}
+	}
+
+}

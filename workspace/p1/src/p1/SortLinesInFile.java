@@ -1,0 +1,109 @@
+package p1;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class SortLinesInFile {
+	
+	static List<String> lines = new ArrayList<String>();
+
+	public static void main(String[] args) {
+
+		printFile("words.txt");
+		readFile();
+		sortFile();
+		writeFile();
+		printFile("SortedWords.txt");
+	}
+	
+	public static void readFile()
+	{
+		try
+		{
+			File file = new File("words.txt");
+			FileReader fr = new FileReader(file);
+			BufferedReader br = new BufferedReader(fr);
+			String line;
+			while((line = br.readLine()) != null)
+			{
+				lines.add(line);
+			}
+			
+//			int i = 0;
+//			for(String s : lines)
+//			{
+//				System.out.print(i);
+//				System.out.println(s);
+//				i++;
+//			}
+		}
+		catch(IOException ioe)
+		{
+			ioe.printStackTrace(System.err);
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+	
+	public static void sortFile()
+	{
+		Collections.sort(lines);
+	}
+	
+	public static void writeFile()
+	{
+		try
+		{
+			FileWriter fw = new FileWriter("SortedWords.txt"); 
+
+			int size = lines.size();
+	        for (int i = 0; i < size; i++)
+	        {
+	            String s = lines.get(i).toString();
+	            fw.write(s);
+	            if(i < size - 1)
+	            {
+	            	fw.write("\n");
+	            }
+	        }
+	        fw.close();
+		}
+		catch(IOException ioe)
+		{
+			ioe.printStackTrace(System.err);
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+	
+	public static void printFile(String path)
+	{
+		try
+		{
+			File file = new File(path);
+			FileReader fr = new FileReader(file);
+			BufferedReader br = new BufferedReader(fr);
+			String line;
+			while((line = br.readLine()) != null)
+			{
+				System.out.println(line);
+			}
+		}
+		catch(IOException ioe)
+		{
+			ioe.printStackTrace();
+		}
+	}
+
+}

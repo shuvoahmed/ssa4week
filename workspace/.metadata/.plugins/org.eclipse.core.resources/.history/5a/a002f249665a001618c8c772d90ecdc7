@@ -1,0 +1,15 @@
+package p1;
+
+import java.nio.file.Files;
+import java.util.List;
+import java.nio.charset.StandardCharsets;
+
+public class ReadFile {
+
+	public static void main(String[] args) {
+		
+		Charset charset = Charset
+		List<String> lines = Files.readAllLines("words.txt", StandardCharsets.UTF_8);
+	}
+
+}
