@@ -1,0 +1,26 @@
+package p1;
+
+public class Stack {
+	private int[] store;
+	private int len;
+	
+	public Stack()
+	{
+		this.store = new int[10];
+		this.len = 0;
+	}
+	public static void main(String[] args) {
+		Stack st = new Stack();
+	}
+	
+	public void push(int a)
+	{
+		
+	}
+	
+	public int pop()
+	{
+		
+	}
+
+}
