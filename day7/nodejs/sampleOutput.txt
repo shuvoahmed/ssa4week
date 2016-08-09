@@ -1,0 +1,4 @@
+My Sample File
+This file will be read by JavaScript / Nodejs
+And written to another file by the name of sampleOutput.txt
+This file has four lines...
