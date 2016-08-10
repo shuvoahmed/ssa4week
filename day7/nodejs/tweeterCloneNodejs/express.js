@@ -23,7 +23,7 @@ app.get('/', function(req, res) {
     res.send('Hello World!');
 });
 
-app.get('/tweets', function(req, res){
+app.get('/tweets', function(req, res){  //'tweets/:id/'; var id = req.params.id;
     console.log("/tweets");
     res.sendFile(__dirname + "/" + "public/web/userOwnTweets.html")
 });
@@ -34,6 +34,22 @@ app.get('/get_tweets', function(req, res){
     // res.send(JSON.stringify(dbapp.p2));
 
     dbapp.getUserTweetsJSON('shuvo').then(
+         (val) => {
+            console.log(val);
+            res.send(val);
+         },
+         (err) => {
+             console.log('Oh No', err);
+         }
+     )
+});
+
+app.get('/get_tweets/:id/', function(req, res){
+    console.log("/get_tweets/:id/");
+    // console.log(dbapp.p2);
+    // res.send(JSON.stringify(dbapp.p2));
+    var id = req.params.id;
+    dbapp.getUserTweetsJSON(id).then(
          (val) => {
             console.log(val);
             res.send(val);
