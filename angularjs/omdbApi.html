@@ -1,0 +1,23 @@
+<html ng-app="omdbApp">
+  <head>
+    <meta charset="utf-8">
+    <title>OMDB API Angular.js Example</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
+    <script>
+      var omdbApp = angular.module('omdbApp', []);
+      omdbApp.controller('OMDBCtrl', function ($scope, $http){
+        var url = 'http://www.omdbapi.com/?t=batman&y=&plot=short&r=json';
+        $http.get(url).success(function(data) {
+          $scope.movies = data;
+          console.log(data);
+        });
+      });
+    </script>
+  </head>
+  <body ng-controller="OMDBCtrl">
+      <p>
+          {{movies.Title}}
+          {{movies.Year}}
+      </p>
+  </body>
+</html>

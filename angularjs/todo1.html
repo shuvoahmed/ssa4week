@@ -1,0 +1,35 @@
+<html ng-app="todoApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Angular.js Example</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
+    <script>
+      var todoApp = angular.module('todoApp', []);
+      todoApp.controller('ToDoCtrl', function ($scope){
+        //$scope.names = ['Larry', 'Curly', 'Moe'];
+        $scope.tasks = [];
+        // $scope.addTask = function(event) {
+        //   if(event.keyCode === 13) {
+        //     $scope.tasks.push($scope.enteredTask);
+        //   };
+        // };
+
+        var taskInput = document.getElementById('todoid');
+        taskInput.onkeyup = function (event) {
+            if(event.keyCode === 13) {
+                $scope.tasks.push($scope.enteredTask);
+                $scope.$apply();
+            }
+          };
+        });
+    </script>
+  </head>
+  <body ng-controller="ToDoCtrl">
+    <ul>
+      <li ng-repeat="task in tasks track by $index">{{task}} {{$index}}</li>
+    </ul>
+      <!--<input type="text" id="todoid" ng-model="enteredTask" ng-keyup="addTask($event)">-->
+      <input type="text" id="todoid" ng-model="enteredTask">
+
+  </body>
+</html>

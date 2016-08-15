@@ -1,0 +1,26 @@
+<html ng-app="todoApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Angular.js Example</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
+    <script>
+      var todoApp = angular.module('todoApp', []);
+      todoApp.controller('ToDoCtrl', function ($scope){
+        //$scope.names = ['Larry', 'Curly', 'Moe'];
+        $scope.tasks = [];
+        $scope.addTask = function() {
+          $scope.tasks.push($scope.enteredTask);
+        };
+      });
+    </script>
+  </head>
+  <body ng-controller="ToDoCtrl">
+    <ul>
+      <li ng-repeat="task in tasks">{{task}}</li>
+    </ul>
+    <form ng-submit="addTask()">
+      <input type="text" ng-model="enteredTask">
+      <input type="submit" value="add">
+    </form>
+  </body>
+</html>
