@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>ngMessages Demo</title>
+  <script src="https://code.angularjs.org/1.4.0/angular.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-messages.js"></script>
+  <script src="app.js"></script>
+</head>
+<body ng-app="app" ng-controller="MainCtrl as main">
+  
+  <form name="userForm" novalidate>
+    
+    <div ng-class="{ 'has-error': userForm.name.$touched && userForm.name.$invalid }">
+      <label>Name</label>
+      <input type="text" name="name" 
+        ng-model="main.name"
+        ng-minlength="5"
+        ng-maxlength="10"
+        required>
+        
+      <div ng-messages="userForm.name.$error" ng-if="userForm.name.$touched">
+        <p ng-message="minlength">Your name is too short.</p>
+        <p ng-message="maxlength">Your name is too long.</p>
+        <p ng-message="required">Your name is required.</p>
+      </div>
+    </div>
+    
+    <div ng-class="{ 'has-error': userForm.email.$touched && userForm.email.$invalid }">
+      <label>Email</label>
+      <input type="email" name="email"  
+        ng-model="main.email"
+        ng-minlength="5"
+        ng-maxlength="20"
+        required>
+        
+      <div ng-messages="userForm.email.$error" ng-if="userForm.email.$touched">
+        <!--<div ng-messages-include="messages.html"></div>-->
+        <p ng-message="email">This needs to be a valid email</p>
+        <p ng-message="minlength">Email is too short.</p>
+        <p ng-message="maxlength">Email is too long.</p>
+        <p ng-message="required">Email is required.</p>
+      </div>
+    </div>  
+
+    <div ng-class="{ 'has-error': userForm.website.$touched && userForm.website.$invalid }">
+      <label>Website</label>
+      <input type="url" name="url"  
+        ng-model="main.url"
+        ng-minlength="5"
+        ng-maxlength="20"
+        required>
+        
+      <div ng-messages="userForm.url.$error" ng-if="userForm.url.$touched">
+        <!--<div ng-messages-include="messages.html"></div>-->
+        <p ng-message="url">This needs to be a valid URL, must start with http://</p>
+        <p ng-message="minlength">URL is too short.</p>
+        <p ng-message="maxlength">URL is too long.</p>
+        <p ng-message="required">URL is required.</p>
+      </div>
+    </div>
+    
+    <div ng-class="{ 'has-error': userForm.website.$touched && userForm.website.$invalid }">
+      <label>Message</label>
+      <input type="text" name="msg"  
+        ng-model="main.msg"
+        ng-minlength="1"
+        ng-maxlength="100"
+        required>
+        
+      <div ng-messages="userForm.msg.$error" ng-if="userForm.msg.$touched">
+        <!--<div ng-messages-include="messages.html"></div>-->
+        <!--<p ng-message="msg">This needs to be a valid URL, must start with http://</p>-->
+        <p ng-message="minlength">Message can not be left empty.</p>
+        <p ng-message="maxlength">Message is too long.</p>
+        <p ng-message="required">Message is required.</p>
+      </div>
+    </div>
+
+
+    <div>
+      <button type="submit">Submit</button>
+    </div>
+    
+  </form>
+  
+<!--<pre>userForm.name.$error = {{ userForm.name.$error | json }}</pre>-->
+  
+</body>
+</html>
