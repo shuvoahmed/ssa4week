@@ -1,0 +1,23 @@
+[
+  {
+    "name": "iPhone 6",
+    "price": 599,
+    "category": "Phone"
+  },
+  {
+    "name": "BIC",
+    "price": 0.49,
+    "category": "Pen"
+  },
+  {
+    "name": "MS Windows 10 Pro",
+    "price": 150.99,
+    "category": "Software"
+  },
+  {
+    "name": "Samsung Galaxy S7",
+    "price": 609.99,
+    "category": "Phone"
+  }
+
+]

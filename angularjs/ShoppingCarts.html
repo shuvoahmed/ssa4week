@@ -1,0 +1,69 @@
+<html ng-app="shopApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Angular.js Example</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-route.min.js"></script>
+    <script>
+      var shopApp = angular.module('shopApp', ['ngRoute']);
+
+      shopApp.config(function($routeProvider) {
+        $routeProvider.
+          when('/', {
+            templateUrl: 'item-list.html',
+            controller: 'ItemListCtrl'
+          }).
+          when('/:itemName', {
+            templateUrl: 'item-detail.html',
+            controller: 'ItemDetailCtrl'
+          }).
+          otherwise({
+            redirectTo: '/'
+          });
+      });
+
+      shopApp.factory('items', function($http){
+
+        var cachedData;
+
+        function getData(callback){
+          if(cachedData) {
+            callback(cachedData);
+          } else {
+            $http.get('items.json').success(function(data){
+              cachedData = data;
+              callback(data);
+            });
+          }
+        }
+
+        return {
+          list: getData,
+          find: function(name, callback){
+            getData(function(data) {
+              var item = data.filter(function(entry){
+                return entry.name === name;
+              })[0];
+              callback(item);
+            });
+          }
+        };
+      });
+
+      shopApp.controller('ItemListCtrl', function ($scope, items){
+        items.list(function(items) {
+          $scope.items = items;
+        });
+      });
+
+      shopApp.controller('ItemDetailCtrl', function ($scope, $routeParams, items){
+        items.find($routeParams.itemName, function(item) {
+          $scope.item = item;
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div ng-view></div>
+  </body>
+</html>
