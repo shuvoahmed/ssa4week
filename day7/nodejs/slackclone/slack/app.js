@@ -20,6 +20,7 @@ if (!dbexists) {
                        "(ID             INT         PRIMARY KEY     NOT NULL," +
                        " USERNAME       CHAR(50)                    NOT NULL, " +
                        " NAME           CHAR(50)                    NOT NULL, " +
+                       " EMAIL          CHAR(50)                    NOT NULL, " +
                        " PASSWORD       CHAR(50)                    NOT NULL)"; 
 
         var createTeamTableSql = "CREATE TABLE IF NOT EXISTS TEAM " +
@@ -28,7 +29,9 @@ if (!dbexists) {
 
         var createChannelTableSql = "CREATE TABLE IF NOT EXISTS CHANNEL " +
                        "(ID             INT         PRIMARY KEY     NOT NULL," +
-                       " CHANNELNAME    CHAR(50)                    NOT NULL)";
+                       " CHANNELNAME    CHAR(50)                    NOT NULL," +
+                       " TEAMID         INT                         NOT NULL," +
+                       " DESCRIPTION    TEXT                                )";
                        
         var createMessageTableSql = "CREATE TABLE IF NOT EXISTS MESSAGE " +
                        "(ID             INT         PRIMARY KEY     NOT NULL," +
@@ -50,11 +53,11 @@ if (!dbexists) {
         
 
         var insertUserSql = "INSERT INTO USER (ID, USERNAME, NAME, PASSWORD) " +
-            "VALUES (1, 'shuvo',   'Shuvo Ahmed',      'shuvopassword')," +
-                   "(2, 'abu',     'Abu Moinuddin',    'abupassword')," +
-                   "(3, 'charles', 'Charles Walsek',   'charlespassword')," +
-                   "(4, 'beiying', 'Beiying Chen',     'beiyingpassword')," +
-                   "(5, 'swarup',  'Swarup Khatri',    'swarup');"; 
+            "VALUES (1, 'shuvo',   'Shuvo Ahmed',      'shuvoahmed@hotmail.com', 'shuvopassword')," +
+                   "(2, 'abu',     'Abu Moinuddin',    'abu@myslack.com',        'abupassword')," +
+                   "(3, 'charles', 'Charles Walsek',   'charles@myslack.com',    'charlespassword')," +
+                   "(4, 'beiying', 'Beiying Chen',     'beiying@myslack.com',    'beiyingpassword')," +
+                   "(5, 'swarup',  'Swarup Khatri',    'swarup@myslack.com',     'swarup');"; 
 
         var insertTeamSql = "INSERT INTO TEAM (ID, TEAMNAME) " +
             "VALUES (1, 'slack')," +

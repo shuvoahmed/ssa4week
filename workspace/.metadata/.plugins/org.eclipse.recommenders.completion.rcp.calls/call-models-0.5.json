@@ -1,0 +1,22 @@
+{
+  "C:\\Program Files\\Java\\jre1.8.0_101\\lib\\rt.jar": {
+    "coordinate": "jre:jre:zip:call:1.0.0",
+    "location": "C:\\Program Files\\Java\\jre1.8.0_101\\lib\\rt.jar",
+    "status": "RESOLVED"
+  },
+  "C:\\bootcamp\\ssa4week\\workspace\\p1\\src": {
+    "location": "C:\\bootcamp\\ssa4week\\workspace\\p1\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027C:\\bootcamp\\ssa4week\\workspace\\p1\\src\u0027. Skipped."
+  },
+  "C:\\bootcamp\\ssa4week\\workspace\\ssa4week-twitter\\twitterclone\\src": {
+    "location": "C:\\bootcamp\\ssa4week\\workspace\\ssa4week-twitter\\twitterclone\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027C:\\bootcamp\\ssa4week\\workspace\\ssa4week-twitter\\twitterclone\\src\u0027. Skipped."
+  },
+  "C:\\bootcamp\\ssa4week\\workspace\\abu\\ssa4week-twitter\\twitterclone\\src": {
+    "location": "C:\\bootcamp\\ssa4week\\workspace\\abu\\ssa4week-twitter\\twitterclone\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027C:\\bootcamp\\ssa4week\\workspace\\abu\\ssa4week-twitter\\twitterclone\\src\u0027. Skipped."
+  }
+}
